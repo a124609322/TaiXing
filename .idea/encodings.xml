@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/pom.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/constant/Constant.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/controller/AdminController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/controller/BaseController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/controller/admin/BannerController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/controller/admin/LogisticsController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/controller/admin/ManagerController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/controller/admin/RoleController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/controller/admin/WaybillController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/dao/MenuMapper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/dao/RoleMapper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/filter/LoginFilter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/model/Manager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/model/Menu.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/model/Role.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/service/WaybillServcie.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/service/impl/BaseService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/service/impl/WaybillServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/util/CommonUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/util/DateUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/util/ExcelUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/util/MD5.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/chuandu/vo/Pager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/config.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/log4j.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping/BannerMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping/LinkMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping/LogisticsMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping/ManagerMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping/MenuMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping/NoticeMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping/RobotMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping/RoleMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping/WaybillMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/Ext" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/Ext/ext-debug.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/index.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/login.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/loginNotice.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/app" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/app/chuandu/util/ExtCommon.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/app/ux/DateTime.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/app/ux/DateTimePicker.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/bootstrap" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/css/font-awesome.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/fonts" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chuandu.dao.LinkMapper" >
+  <resultMap id="BaseResultMap" type="com.chuandu.model.Link" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="linkname" property="linkname" jdbcType="VARCHAR" />
+    <result column="logo" property="logo" jdbcType="VARCHAR" />
+    <result column="createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="modifydate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="managerId" property="managerid" jdbcType="VARCHAR" />
+    <result column="link" property="link" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, linkname, logo, createdate, modifydate, deleted, managerId, link
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from table_exp_link
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from table_exp_link
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chuandu.model.Link" >
+    insert into table_exp_link (id, linkname, logo,
+    createdate, modifydate, deleted,
+    managerId, link)
+    values (#{id,jdbcType=VARCHAR}, #{linkname,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR},
+    #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER},
+    #{managerid,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chuandu.model.Link" >
+    insert into table_exp_link
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="linkname != null" >
+        linkname,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="createdate != null" >
+        createdate,
+      </if>
+      <if test="modifydate != null" >
+        modifydate,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="managerid != null" >
+        managerId,
+      </if>
+      <if test="link != null" >
+        link,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="linkname != null" >
+        #{linkname,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="managerid != null" >
+        #{managerid,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null" >
+        #{link,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chuandu.model.Link" >
+    update table_exp_link
+    <set >
+      <if test="linkname != null" >
+        linkname = #{linkname,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        modifydate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="managerid != null" >
+        managerId = #{managerid,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null" >
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chuandu.model.Link" >
+    update table_exp_link
+    set linkname = #{linkname,jdbcType=VARCHAR},
+    logo = #{logo,jdbcType=VARCHAR},
+    createdate = #{createdate,jdbcType=TIMESTAMP},
+    modifydate = #{modifydate,jdbcType=TIMESTAMP},
+    deleted = #{deleted,jdbcType=INTEGER},
+    managerId = #{managerid,jdbcType=VARCHAR},
+    link = #{link,jdbcType=VARCHAR},
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectPager" parameterType="com.chuandu.vo.Pager" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from table_exp_link
+    WHERE deleted=1
+    ORDER BY createDate desc
+    LIMIT #{start,jdbcType=INTEGER},#{limit,jdbcType=INTEGER};
+  </select>
+
+  <select id="selectPagerForCount" parameterType="com.chuandu.vo.Pager" resultType="java.lang.Integer">
+    select
+    count(id)
+    from table_exp_link
+    WHERE deleted=1
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from table_exp_link
+    where deleted = 1
+  </select>
+</mapper>

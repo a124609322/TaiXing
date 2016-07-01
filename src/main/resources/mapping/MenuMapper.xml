@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chuandu.dao.MenuMapper" >
+  <resultMap id="BaseResultMap" type="com.chuandu.model.Menu" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="menuname" property="menuname" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentid" jdbcType="VARCHAR" />
+    <result column="createdate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="modifydate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, menuname, url, parentId, createdate, modifydate, deleted, sort, pic
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from table_exp_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from table_exp_menu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chuandu.model.Menu" >
+    insert into table_exp_menu (id, menuname, url, 
+      parentId, createdate, modifydate, 
+      deleted, sort, pic)
+    values (#{id,jdbcType=VARCHAR}, #{menuname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{parentid,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{pic,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chuandu.model.Menu" >
+    insert into table_exp_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="menuname != null" >
+        menuname,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="createdate != null" >
+        createdate,
+      </if>
+      <if test="modifydate != null" >
+        modifydate,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null" >
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chuandu.model.Menu" >
+    update table_exp_menu
+    <set >
+      <if test="menuname != null" >
+        menuname = #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        modifydate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chuandu.model.Menu" >
+    update table_exp_menu
+    set menuname = #{menuname,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      parentId = #{parentid,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      modifydate = #{modifydate,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      pic = #{pic,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findMenuesByManagerId" resultType="com.chuandu.model.Menu" parameterType="java.lang.String" >
+    SELECT m.id,m.createdate,m.deleted,m.menuname,m.modifydate,m.parentId,m.pic,m.sort,m.url
+    FROM table_exp_menu m
+    INNER JOIN table_exp_role_menu rm ON m.id = rm.menuId
+    INNER JOIN table_exp_role r ON rm.roleId = r.id
+    INNER JOIN table_exp_manager ma ON ma.roleId = r.id
+    WHERE ma.id = #{id,jdbcType=VARCHAR}
+    AND m.deleted = 1
+    ORDER BY m.sort
+  </select>
+
+  <select id="findMenuByName" resultType="com.chuandu.model.Menu" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from table_exp_menu
+    WHERE menuname = #{menuname,jdbcType=VARCHAR}
+    AND deleted = 1
+  </select>
+
+  <select id="selectAllTree" resultType="java.util.HashMap" parameterType="java.lang.String" >
+    select m.id,m.menuname,m.parentId,rm.roleId
+    from table_exp_menu m
+    LEFT JOIN table_exp_role_menu rm on m.id = rm.menuId
+    and rm.roleId=#{id,jdbcType=VARCHAR}
+    ORDER BY m.createdate
+  </select>
+
+  <select id="selectMenuTreByRoleId" resultType="java.util.HashMap" parameterType="java.lang.String" >
+    select m.id,m.menuname,m.parentId,rm.roleId
+    from table_exp_menu m
+    LEFT JOIN table_exp_role_menu rm on m.id = rm.menuId
+    and rm.roleId=#{param2,jdbcType=VARCHAR}
+    where m.deleted = 1
+    <if test="param1 != '-1'">
+    and m.parentId = #{param1,jdbcType=VARCHAR}
+    </if>
+    <if test="param1 == '-1'">
+      and m.parentId is null
+    </if>
+    ORDER BY m.createdate
+  </select>
+</mapper>
