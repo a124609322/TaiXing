@@ -71,7 +71,9 @@ public class ManagerController extends BaseController {
         success = true;
         msg = "保存成功！";
         boolean isRepeat = true;
+        Manager manager1 = (Manager) session.getAttribute(Constant.SESSION_KEY);
         try {
+            manager.setCreatorId(manager1.getId());
             isRepeat = managerServcie.save(manager);
             if(isRepeat){
                 msg = "登录名已经存在，请重新添加！";

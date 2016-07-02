@@ -35,6 +35,7 @@
     <result column="currentstate" property="currentstate" jdbcType="INTEGER" />
     <result column="isEnd" property="isEnd" jdbcType="INTEGER" />
     <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+    <association property="manager" column="managerId" select="com.chuandu.dao.ManagerMapper.selectByPrimaryKey"/>
   </resultMap>
   
   <resultMap id="BaseWithLogisc" type="com.chuandu.model.Waybill" extends="BaseResultMap">

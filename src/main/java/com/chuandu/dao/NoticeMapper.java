@@ -4,6 +4,7 @@ import com.chuandu.model.Notice;
 import com.chuandu.vo.Pager;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -33,4 +34,6 @@ public interface NoticeMapper {
     List<Notice> selectByTypes(String types);
 
     List<Notice> selectAll();
+
+    Date findMinTop();
 }

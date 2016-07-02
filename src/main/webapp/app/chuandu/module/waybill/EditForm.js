@@ -100,8 +100,8 @@ Ext.define("app.chuandu.module.waybill.EditForm",{
                     name:'phone',
                     labelWidth:60,
                     xtype:'textfield',
-                    allowBlank:true/*,
-                    margin: '0 0 0 20',
+                    allowBlank:true,
+                    margin: '0 0 0 20'/*,
                     vtype:'mobilephone'*/
                 }]
             },{

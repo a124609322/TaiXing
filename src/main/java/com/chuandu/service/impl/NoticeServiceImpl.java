@@ -70,7 +70,10 @@ public class NoticeServiceImpl extends BaseService implements NoticeServcie {
 
     @Override
     public void updateTop(Notice notice) throws ParseException {
-        if(null == notice.getTop()){
+        if("bottom".equals(notice.getIntro())){
+            Date date = noticeMapper.findMinTop();
+            notice.setTop(new Date(date.getTime()-1));
+        }else if(null == notice.getTop()){
             notice.setTop(new Date());
         }else{
             notice.setTop(Constant.SIMPLEDATEFORMAT.parse(Constant.NOTICE_DEFATUL_TOP));

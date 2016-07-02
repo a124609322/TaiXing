@@ -19,6 +19,10 @@ public class Manager {
 
     private Integer deleted;
 
+    private String creatorId;
+
+    private Manager creator;
+
     private Role role;
 
     public String getId() {
@@ -91,5 +95,21 @@ public class Manager {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public Manager getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Manager creator) {
+        this.creator = creator;
     }
 }

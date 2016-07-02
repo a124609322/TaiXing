@@ -49,7 +49,16 @@ Ext.define('app.chuandu.module.manager.Grid', {
             }
             return "无";
         }
-    }, {
+    },  {
+        dataIndex: 'creator',
+        text: '创建人',
+        renderer:function(value){
+            if (value) {
+                return value.nickname ? value.nickname : '无';
+            }
+            return "无";
+        }
+    },{
         dataIndex: 'createdate',
         text: '创建时间'
     }, {

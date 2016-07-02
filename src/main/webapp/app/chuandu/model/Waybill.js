@@ -29,6 +29,7 @@ Ext.define("app.chuandu.model.Waybill", {
         {name: 'isautoupdate', type: 'int'},
         {name: 'robotid', type: 'string'},
         {name: 'isEnd', type: 'int'},
+        {name:'manager'},
         {name: 'endtime', type: 'string', convert: function (value) {
             if (value) {
                 var createTime = Ext.Date.format(new Date(value), "Y-m-d H:i:s");

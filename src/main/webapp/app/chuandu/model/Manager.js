@@ -5,6 +5,8 @@ Ext.define("app.chuandu.model.Manager", {
         {name: 'nickname', type: 'string'},
         {name: 'loginname', type: 'string'},
         {name: 'roleid', type: 'string'},
+        {name: 'creatorId', type: 'string'},
+        {name: 'creator'},
         {
             name: 'createdate', type: 'string', convert: function (value) {
             if (value) {

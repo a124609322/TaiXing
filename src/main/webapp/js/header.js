@@ -72,7 +72,7 @@ var iniNotice = function () {
                     current = 'style="z-index:'+j+'; display: none;"';
                 }
                 noticeHtml += '<li '+current+'>' +
-                    '<p>0'+(i+1)+' '+noticeList[i].title+' <a href="/notice/view?id='+noticeList[i].id+'">了解详情</a></p>' +
+                    '<p>'+noticeList[i].title+' <a href="/notice/view?id='+noticeList[i].id+'">了解详情</a></p>' +
                     '</li>'
             }
             $(".focus-banner-lists").html(noticeHtml);

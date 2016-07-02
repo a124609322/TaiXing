@@ -137,7 +137,16 @@ Ext.define('app.chuandu.module.waybill.Grid', {
         dataIndex: 'robotid',
         text: '机器人id',
         hidden: true
-    }, {
+    },{
+        dataIndex: 'manager',
+        text: '创建者',
+        renderer:function(value){
+            if (value) {
+                return value.nickname ? value.nickname : '无';
+            }
+            return "无";
+        }
+    },  {
         dataIndex: 'createdate',
         text: '创建时间'
     }, {

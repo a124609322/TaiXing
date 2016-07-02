@@ -201,6 +201,40 @@ Ext.define('app.chuandu.module.notice.Grid', {
                 })
             }
         },'',{
+            icon:'/image/iconfont-bottom.png',
+            tooltip:'置底',
+            handler: function (grid, rowIndex, colIndex) {
+                var rec = grid.getStore().getAt(rowIndex);
+                var message = "设置 <strong>公告</strong> 中的";
+                message += '以下记录';
+                message += '<ol>';
+                message += '<li>' + rec.get('title') + '</li>';
+                message += '</ol>';
+                CommonMsg.question({
+                    title:'置顶设置',
+                    msg : message,
+                    fn : function() {
+                        ExtCommon.request({
+                            url: '/admin/notice/top.json',
+                            method: 'POST',
+                            params: {id: rec.get('id'),intro:'bottom'},
+                            success: function () {
+                                CommonMsg.info({
+                                    msg: '设置成功！',
+                                    fn: function () {
+                                        var store = Ext.data.StoreManager.lookup('noticeModuleStore');
+                                        store.reload({
+                                            params: {}
+                                        });
+                                    }
+                                });
+
+                            }
+                        });
+                    }
+                });
+            }
+        },'',{
             icon:'/image/iconfont-roll.png',
             tooltip:'滚动',
             handler: function (grid, rowIndex, colIndex) {

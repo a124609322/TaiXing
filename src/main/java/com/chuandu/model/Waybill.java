@@ -55,6 +55,8 @@ public class Waybill {
 
     private String managerid;
 
+    private Manager manager;
+
     private Integer problem;
 
     private String problemreason;
@@ -347,5 +349,13 @@ public class Waybill {
 
     public void setCurrentstate(Integer currentstate) {
         this.currentstate = currentstate;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
 }

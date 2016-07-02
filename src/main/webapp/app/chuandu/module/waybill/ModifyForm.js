@@ -21,22 +21,22 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     name:'code',
                     xtype:'displayfield',
                     labelWidth:60,
-                    allowBlank:false,
+                    allowBlank:true/*,
                     maxLength:20,
                     maxLengthText:'最大长度是20位字符',
                     minLength:1,
-                    minLengthText:'最小长度是1位字符'
+                    minLengthText:'最小长度是1位字符'*/
                 },{
                     fieldLabel:'批次号',
                     name:'batchcode',
                     xtype:'textfield',
                     labelWidth:60,
-                    allowBlank:false,
-                    margin: '0 0 0 20',
+                    allowBlank:true,
+                    margin: '0 0 0 20'/*,
                     maxLengthText:'最大长度是20位字符',
                     minLength:2,
                     minLengthText:'最小长度是2位字符',
-                    vtype:'batchCode'
+                    vtype:'batchCode'*/
                 }]
             },{
                 layout:'column',
@@ -49,11 +49,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     name:'expresscode',
                     labelWidth:60,
                     xtype:'textfield',
-                    allowBlank:true,
+                    allowBlank:true/*,
                     maxLength:20,
                     maxLengthText:'转运单号的最大长度是20位字符',
                     minLength:2,
-                    minLengthText:'转运单号的最小长度是2位字符'
+                    minLengthText:'转运单号的最小长度是2位字符'*/
                 },{
                     fieldLabel: '快递公司',
                     name: 'expresscompany',
@@ -90,18 +90,18 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     name:'name',
                     xtype:'textfield',
                     labelWidth:60,
-                    allowBlank:true,
+                    allowBlank:true/*,
                     maxLengthText:'转运单号的最大长度是10位字符',
                     minLength:2,
-                    minLengthText:'转运单号的最小长度是2位字符'
+                    minLengthText:'转运单号的最小长度是2位字符'*/
                 },{
                     fieldLabel:'电话',
                     name:'phone',
                     labelWidth:60,
                     xtype:'textfield',
                     allowBlank:true,
-                    margin: '0 0 0 20',
-                    vtype:'mobilephone'
+                    margin: '0 0 0 20'/*,
+                    vtype:'mobilephone'*/
                 }]
             },{
                 layout:'column',
@@ -117,11 +117,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     allowBlank:true,
                     hideTrigger: false,
                     keyNavEnabled: true,
-                    mouseWheelEnabled: true,
+                    mouseWheelEnabled: true/*,
                     maxLength:10,
                     maxLengthText:'价值的最大长度是10位字符',
                     minLength:1,
-                    minLengthText:'价值的最小长度是1位字符'
+                    minLengthText:'价值的最小长度是1位字符'*/
                 }]
             },{
                 layout:'column',
@@ -150,11 +150,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     allowBlank:true,
                     hideTrigger: false,
                     keyNavEnabled: true,
-                    mouseWheelEnabled: true,
+                    mouseWheelEnabled: true/*,
                     maxLength:10,
                     maxLengthText:'重量的最大长度是10位字符',
                     minLength:1,
-                    minLengthText:'重量的最小长度是1位字符'
+                    minLengthText:'重量的最小长度是1位字符'*/
                 },{
                     fieldLabel:'保险',
                     name:'insurance',
@@ -164,11 +164,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     margin: '0 0 0 20',
                     hideTrigger: false,
                     keyNavEnabled: true,
-                    mouseWheelEnabled: true,
+                    mouseWheelEnabled: true/*,
                     maxLength:10,
                     maxLengthText:'保险的最大长度是10位字符',
                     minLength:1,
-                    minLengthText:'保险的最小长度是1位字符'
+                    minLengthText:'保险的最小长度是1位字符'*/
                 }]
             },{
                 layout:'column',
@@ -181,22 +181,22 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     name:'sender',
                     labelWidth:60,
                     xtype:'textfield',
-                    allowBlank:true,
+                    allowBlank:true/*,
                     maxLength:20,
                     maxLengthText:'寄件方的最大长度是20位字符',
                     minLength:1,
-                    minLengthText:'寄件方的最小长度是1位字符'
+                    minLengthText:'寄件方的最小长度是1位字符'*/
                 },{
                     fieldLabel:'渠道',
                     name:'channel',
                     xtype:'textfield',
                     labelWidth:60,
                     allowBlank:true,
-                    margin: '0 0 0 20',
+                    margin: '0 0 0 20'/*,
                     maxLength:20,
                     maxLengthText:'渠道的最大长度是20位字符',
                     minLength:1,
-                    minLengthText:'渠道的最小长度是1位字符'
+                    minLengthText:'渠道的最小长度是1位字符'*/
                 }]
             },{
                 layout:'column',
@@ -227,11 +227,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     xtype:'textfield',
                     labelWidth:60,
                     allowBlank:true,
-                    margin: '0 0 0 20',
+                    margin: '0 0 0 20'/*,
                     maxLength:50,
                     maxLengthText:'渠道的最大长度是50位字符',
                     minLength:1,
-                    minLengthText:'渠道的最小长度是1位字符'
+                    minLengthText:'渠道的最小长度是1位字符'*/
                 }]
             }]
         },{
@@ -246,11 +246,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     labelWidth:40,
                     xtype:'textfield',
                     allowBlank:true,
-                    width:300,
+                    width:300/*,
                     maxLength:50,
                     maxLengthText:'最大长度是50位字符',
                     minLength:1,
-                    minLengthText:'最小长度是1位字符'
+                    minLengthText:'最小长度是1位字符'*/
                 },{
                     fieldLabel:'数量1',
                     name:'amount1',
@@ -261,12 +261,12 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     width:120,
                     hideTrigger: false,
                     keyNavEnabled: true,
-                    mouseWheelEnabled: true,
+                    mouseWheelEnabled: true/*,
                     vtype:'integer',
                     maxLength:7,
                     maxLengthText:'最大长度是7位字符',
                     minLength:1,
-                    minLengthText:'最小长度是1位字符'
+                    minLengthText:'最小长度是1位字符'*/
                 },{
                     fieldLabel:'单价1',
                     name:'price1',
@@ -277,11 +277,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     width:160,
                     hideTrigger: false,
                     keyNavEnabled: true,
-                    mouseWheelEnabled: true,
+                    mouseWheelEnabled: true/*,
                     maxLength:10,
                     maxLengthText:'最大长度是10位字符',
                     minLength:1,
-                    minLengthText:'最小长度是1位字符'
+                    minLengthText:'最小长度是1位字符'*/
                 }]
             },{
                 layout:'column',
@@ -292,11 +292,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     labelWidth:40,
                     xtype:'textfield',
                     allowBlank:true,
-                    width:300,
+                    width:300/*,
                     maxLength:50,
                     maxLengthText:'最大长度是50位字符',
                     minLength:1,
-                    minLengthText:'最小长度是1位字符'
+                    minLengthText:'最小长度是1位字符'*/
                 },{
                     fieldLabel:'数量2',
                     name:'amount2',
@@ -307,12 +307,12 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     width:120,
                     hideTrigger: false,
                     keyNavEnabled: true,
-                    mouseWheelEnabled: true,
+                    mouseWheelEnabled: true/*,
                     vtype:'integer',
                     maxLength:7,
                     maxLengthText:'最大长度是7位字符',
                     minLength:1,
-                    minLengthText:'最小长度是1位字符'
+                    minLengthText:'最小长度是1位字符'*/
                 },{
                     fieldLabel:'单价2',
                     name:'price2',
@@ -323,11 +323,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     width:160,
                     hideTrigger: false,
                     keyNavEnabled: true,
-                    mouseWheelEnabled: true,
+                    mouseWheelEnabled: true/*,
                     maxLength:10,
                     maxLengthText:'最大长度是10位字符',
                     minLength:1,
-                    minLengthText:'最小长度是1位字符'
+                    minLengthText:'最小长度是1位字符'*/
                 }]
             },{
                 layout:'column',
@@ -338,11 +338,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     labelWidth:40,
                     xtype:'textfield',
                     allowBlank:true,
-                    width:300,
+                    width:300/*,
                     maxLength:50,
                     maxLengthText:'最大长度是50位字符',
                     minLength:1,
-                    minLengthText:'最小长度是1位字符'
+                    minLengthText:'最小长度是1位字符'*/
                 },{
                     fieldLabel:'数量3',
                     name:'amount3',
@@ -353,12 +353,12 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     width:120,
                     hideTrigger: false,
                     keyNavEnabled: true,
-                    mouseWheelEnabled: true,
+                    mouseWheelEnabled: true/*,
                     vtype:'integer',
                     maxLength:7,
                     maxLengthText:'最大长度是7位字符',
                     minLength:1,
-                    minLengthText:'最小长度是1位字符'
+                    minLengthText:'最小长度是1位字符'*/
                 },{
                     fieldLabel:'单价3',
                     name:'price3',
@@ -369,11 +369,11 @@ Ext.define("app.chuandu.module.waybill.ModifyForm",{
                     width:160,
                     hideTrigger: false,
                     keyNavEnabled: true,
-                    mouseWheelEnabled: true,
+                    mouseWheelEnabled: true/*,
                     maxLength:20,
                     maxLengthText:'最大长度是20位字符',
                     minLength:1,
-                    minLengthText:'最小长度是1位字符'
+                    minLengthText:'最小长度是1位字符'*/
                 },{
                     name:'id',
                     xtype:'textfield',
