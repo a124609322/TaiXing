@@ -70,21 +70,25 @@ public class WaybillController extends BaseController {
         } catch (Exception e) {
             logger.error(e.getMessage(),e);
         }
-        String companyCode = temp.getExpresscompany();
-        if("SFEXPRESS".equals(companyCode)){
-            temp.setExpresscompany("顺丰快递");
-        }else if("ZTO".equals(companyCode)){
-            temp.setExpresscompany("中通速递");
-        }else if("YTO".equals(companyCode)){
-            temp.setExpresscompany("圆通速递");
-        }else if("YUNDA".equals(companyCode)){
-            temp.setExpresscompany("韵达快运");
-        }else if("HTKY".equals(companyCode)){
-            temp.setExpresscompany("百世汇通");
-        }else if("STO".equals(companyCode)){
-            temp.setExpresscompany("申通快递");
-        }else if("CNPL".equals(companyCode)){
-            temp.setExpresscompany("中邮");
+        if(null != temp){
+            String companyCode = temp.getExpresscompany();
+            if("SFEXPRESS".equals(companyCode)){
+                temp.setExpresscompany("顺丰快递");
+            }else if("ZTO".equals(companyCode)){
+                temp.setExpresscompany("中通速递");
+            }else if("YTO".equals(companyCode)){
+                temp.setExpresscompany("圆通速递");
+            }else if("YUNDA".equals(companyCode)){
+                temp.setExpresscompany("韵达快运");
+            }else if("HTKY".equals(companyCode)){
+                temp.setExpresscompany("百世汇通");
+            }else if("STO".equals(companyCode)){
+                temp.setExpresscompany("申通快递");
+            }else if("CNPL".equals(companyCode)){
+                temp.setExpresscompany("中邮");
+            }else if("CHINAPOST".equals(companyCode)){
+                temp.setExpresscompany("邮政包裹");
+            }
         }
         model.addAttribute("waybill",temp);
         model.addAttribute("timeconsuming",timeconsuming);

@@ -75,7 +75,8 @@ Ext.define("app.chuandu.module.waybill.EditForm",{
                             {"value": "YUNDA", "text": "韵达快运"},
                             {"value": "HTKY", "text": "百世汇通"},
                             {"value": "STO", "text": "申通快递"},
-                            {"value": "CNPL", "text": "中邮"}
+                            {"value": "CNPL", "text": "中邮"},
+                            {"value": "CHINAPOST", "text": "邮政包裹"}
                         ]
                     })
                 }]

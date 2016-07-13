@@ -30,8 +30,8 @@ String basePath = request.getScheme() + "://"
                 <li>
                     <div class="icon fl"><img src="/image/pic_arrivetime.png" alt="" width="30" height="30"/></div>
                     <div class="r-info fl">
-                        <p align="left">泰兴快递单号： ${waybill.code}</p>
-                        <p align="left">国内快递单号： ${waybill.expresscode}</p>
+                        <p align="left">泰兴单号： ${waybill.code}</p>
+                        <p align="left">国内单号： ${waybill.expresscode}</p>
                     </div>
                     <div class="clearfix"></div>
                 </li>
