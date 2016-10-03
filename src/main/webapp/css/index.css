@@ -178,15 +178,16 @@
 }
 
 .nav .info{
-    width: 900px;
+    width: 1200px;
     margin: 0 auto;
 }
 .nav .info .float{
     float: left;
-    width: 100px;
+    width: 120px;
     line-height: 80px;
     font-size: 24px;
     margin-left: 60px;
+    text-align: center;
 }
 /**/
 .focus-banners{

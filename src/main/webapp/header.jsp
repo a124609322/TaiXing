@@ -32,6 +32,7 @@
 <div class="nav">
   <ul class="info">
     <li class="title float" style="margin-left: 0;"><a href="/index.jsp" style="color: #ff6803">首页</a></li>
+    <li class="title float"><a href="/idcardupload.jsp">上传身份证</a></li>
     <li class="title float"><a href="/notice/view?types=abouttaixing">关于泰兴</a></li>
     <li class="title float"><a href="/notice/view?types=contactus">联系我们</a></li>
     <li class="title float"><a href="/notice/view?types=embargo">禁运物品</a></li>
