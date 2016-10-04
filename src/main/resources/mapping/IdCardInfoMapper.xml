@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chuandu.dao.IdCardInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.chuandu.model.IdCardInfo" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="idcardnum" property="idcardnum" jdbcType="VARCHAR" />
+    <result column="cardtype" property="cardtype" jdbcType="INTEGER" />
+    <result column="waybillcode1" property="waybillcode1" jdbcType="VARCHAR" />
+    <result column="waybillcode2" property="waybillcode2" jdbcType="VARCHAR" />
+    <result column="waybillcode3" property="waybillcode3" jdbcType="VARCHAR" />
+    <result column="waybillcode4" property="waybillcode4" jdbcType="VARCHAR" />
+    <result column="waybillcode5" property="waybillcode5" jdbcType="VARCHAR" />
+    <result column="waybillcode6" property="waybillcode6" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="modifyDate" property="modifydate" jdbcType="TIMESTAMP" />
+    <result column="deleted" property="deleted" jdbcType="INTEGER" />
+    <result column="frontCard" property="frontcard" jdbcType="VARCHAR" />
+    <result column="backCard" property="backcard" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, phone, email, idcardnum, cardtype, waybillcode1, waybillcode2, waybillcode3, 
+    waybillcode4, waybillcode5, waybillcode6, createDate, modifyDate, deleted, frontCard, 
+    backCard
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from table_exp_idcard
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from table_exp_idcard
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.chuandu.model.IdCardInfo" >
+    insert into table_exp_idcard (id, name, phone, 
+      email, idcardnum, cardtype, 
+      waybillcode1, waybillcode2, waybillcode3, 
+      waybillcode4, waybillcode5, waybillcode6, 
+      createDate, modifyDate, deleted, 
+      frontCard, backCard)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{idcardnum,jdbcType=VARCHAR}, #{cardtype,jdbcType=INTEGER}, 
+      #{waybillcode1,jdbcType=VARCHAR}, #{waybillcode2,jdbcType=VARCHAR}, #{waybillcode3,jdbcType=VARCHAR}, 
+      #{waybillcode4,jdbcType=VARCHAR}, #{waybillcode5,jdbcType=VARCHAR}, #{waybillcode6,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, 
+      #{frontcard,jdbcType=VARCHAR}, #{backcard,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chuandu.model.IdCardInfo" >
+    insert into table_exp_idcard
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="idcardnum != null" >
+        idcardnum,
+      </if>
+      <if test="cardtype != null" >
+        cardtype,
+      </if>
+      <if test="waybillcode1 != null" >
+        waybillcode1,
+      </if>
+      <if test="waybillcode2 != null" >
+        waybillcode2,
+      </if>
+      <if test="waybillcode3 != null" >
+        waybillcode3,
+      </if>
+      <if test="waybillcode4 != null" >
+        waybillcode4,
+      </if>
+      <if test="waybillcode5 != null" >
+        waybillcode5,
+      </if>
+      <if test="waybillcode6 != null" >
+        waybillcode6,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+      <if test="modifydate != null" >
+        modifyDate,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="frontcard != null" >
+        frontCard,
+      </if>
+      <if test="backcard != null" >
+        backCard,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardnum != null" >
+        #{idcardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cardtype != null" >
+        #{cardtype,jdbcType=INTEGER},
+      </if>
+      <if test="waybillcode1 != null" >
+        #{waybillcode1,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcode2 != null" >
+        #{waybillcode2,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcode3 != null" >
+        #{waybillcode3,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcode4 != null" >
+        #{waybillcode4,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcode5 != null" >
+        #{waybillcode5,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcode6 != null" >
+        #{waybillcode6,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="frontcard != null" >
+        #{frontcard,jdbcType=VARCHAR},
+      </if>
+      <if test="backcard != null" >
+        #{backcard,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chuandu.model.IdCardInfo" >
+    update table_exp_idcard
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardnum != null" >
+        idcardnum = #{idcardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cardtype != null" >
+        cardtype = #{cardtype,jdbcType=INTEGER},
+      </if>
+      <if test="waybillcode1 != null" >
+        waybillcode1 = #{waybillcode1,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcode2 != null" >
+        waybillcode2 = #{waybillcode2,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcode3 != null" >
+        waybillcode3 = #{waybillcode3,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcode4 != null" >
+        waybillcode4 = #{waybillcode4,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcode5 != null" >
+        waybillcode5 = #{waybillcode5,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillcode6 != null" >
+        waybillcode6 = #{waybillcode6,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifydate != null" >
+        modifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="frontcard != null" >
+        frontCard = #{frontcard,jdbcType=VARCHAR},
+      </if>
+      <if test="backcard != null" >
+        backCard = #{backcard,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chuandu.model.IdCardInfo" >
+    update table_exp_idcard
+    set name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      idcardnum = #{idcardnum,jdbcType=VARCHAR},
+      cardtype = #{cardtype,jdbcType=INTEGER},
+      waybillcode1 = #{waybillcode1,jdbcType=VARCHAR},
+      waybillcode2 = #{waybillcode2,jdbcType=VARCHAR},
+      waybillcode3 = #{waybillcode3,jdbcType=VARCHAR},
+      waybillcode4 = #{waybillcode4,jdbcType=VARCHAR},
+      waybillcode5 = #{waybillcode5,jdbcType=VARCHAR},
+      waybillcode6 = #{waybillcode6,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP},
+      modifyDate = #{modifydate,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=INTEGER},
+      frontCard = #{frontcard,jdbcType=VARCHAR},
+      backCard = #{backcard,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByIdNumber" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from table_exp_idcard
+    where idcardnum = #{number,jdbcType=VARCHAR}
+    and cardtype = #{cardtype,jdbcType=INTEGER}
+    and deleted = 1
+  </select>
+
+  <!--<select id="selectPager" parameterType="com.chuandu.vo.Pager" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from table_exp_waybill
+    WHERE deleted = #{dataMap.deleted,jdbcType=INTEGER}
+    <if test="dataMap.code != null" >
+      &lt;!&ndash;and code LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')&ndash;&gt;
+      and code = #{dataMap.code,jdbcType=VARCHAR}
+    </if>
+    <if test="dataMap.batchcode != null" >
+      and batchcode = #{dataMap.batchcode,jdbcType=VARCHAR}
+    </if>
+    <if test="dataMap.name != null" >
+      and name LIKE CONCAT('%',#{dataMap.name,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="dataMap.phone != null" >
+      and phone LIKE CONCAT('%',#{dataMap.phone,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="dataMap.expresscode != null" >
+      and expresscode = #{dataMap.expresscode,jdbcType=VARCHAR}
+    </if>
+    <if test="dataMap.sender != null" >
+      and sender LIKE CONCAT('%',#{dataMap.sender,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="dataMap.starttime != null" >
+      and createdate BETWEEN #{dataMap.starttime,jdbcType=TIMESTAMP} AND #{dataMap.endtime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="dataMap.problem != null" >
+      and problem = #{dataMap.problem,jdbcType=INTEGER}
+    </if>
+    ORDER BY createDate desc
+    LIMIT #{start,jdbcType=INTEGER},#{limit,jdbcType=INTEGER};
+  </select>
+
+  <select id="selectPagerForCount" parameterType="com.chuandu.vo.Pager" resultType="java.lang.Integer">
+    select
+    count(id)
+    from table_exp_waybill
+    WHERE deleted = #{dataMap.deleted,jdbcType=INTEGER}
+    <if test="dataMap.code != null" >
+      &lt;!&ndash;and code LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')&ndash;&gt;
+      and code = #{dataMap.code,jdbcType=VARCHAR}
+    </if>
+    <if test="dataMap.batchcode != null" >
+      and batchcode = #{dataMap.batchcode,jdbcType=VARCHAR}
+    </if>
+    <if test="dataMap.name != null" >
+      and name LIKE CONCAT('%',#{dataMap.name,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="dataMap.phone != null" >
+      and phone LIKE CONCAT('%',#{dataMap.phone,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="dataMap.expresscode != null" >
+      and expresscode = #{dataMap.expresscode,jdbcType=VARCHAR}
+    </if>
+    <if test="dataMap.sender != null" >
+      and sender LIKE CONCAT('%',#{dataMap.sender,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="dataMap.starttime != null" >
+      and createdate BETWEEN #{dataMap.starttime,jdbcType=TIMESTAMP} AND #{dataMap.endtime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="dataMap.problem != null" >
+      and problem = #{dataMap.problem,jdbcType=INTEGER}
+    </if>
+  </select>-->
+</mapper>
