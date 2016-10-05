@@ -4,11 +4,11 @@ Ext.define("app.chuandu.region.Main",{
     alias:'ChuanduViewPort',
     layout : 'border',
     requires:['app.chuandu.model.Manager','app.chuandu.model.Role',"app.chuandu.model.Waybill","app.chuandu.model.Banner","app.chuandu.model.Link",
-        "app.chuandu.model.Logistics","app.chuandu.model.Notice"],
+        "app.chuandu.model.Logistics","app.chuandu.model.Notice","app.chuandu.model.IdCardInfo"],
     uses:['app.chuandu.region.Top','app.chuandu.data.MainModel','app.chuandu.controller.MainController','app.chuandu.region.West', 'app.ux.ButtonTransparent'
         ,'app.chuandu.region.Center','app.chuandu.container.modifyPassword', 'app.chuandu.module.manager.Module','app.chuandu.module.role.Module',
-        "app.chuandu.module.waybill.Module",'app.chuandu.module.notice.Module'
-        ,'app.chuandu.module.link.Module','app.chuandu.module.recyclebin.Module','app.chuandu.module.banner.Module','app.chuandu.module.logistics.Module'
+        "app.chuandu.module.waybill.Module",'app.chuandu.module.notice.Module','app.chuandu.module.banner.Module','app.chuandu.module.logistics.Module'
+        ,'app.chuandu.module.link.Module','app.chuandu.module.recyclebin.Module','app.chuandu.module.idcard.Module'
     ],
    controller:'main',
     viewModel:{

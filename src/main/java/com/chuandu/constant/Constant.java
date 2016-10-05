@@ -118,4 +118,5 @@ public class Constant {
     public static final Integer ROBOT_AUTO_TRUE = 1;
     public static final Integer ROBOT_AUTO_FALSE= 0;
 
+    public static final int EXPORT_INCARD_LIST = 10;
 }

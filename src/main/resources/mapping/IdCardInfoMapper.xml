@@ -242,35 +242,27 @@
     and deleted = 1
   </select>
 
-  <!--<select id="selectPager" parameterType="com.chuandu.vo.Pager" resultMap="BaseResultMap">
+  <select id="selectPager" parameterType="com.chuandu.vo.Pager" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from table_exp_waybill
+    from table_exp_idcard
     WHERE deleted = #{dataMap.deleted,jdbcType=INTEGER}
-    <if test="dataMap.code != null" >
-      &lt;!&ndash;and code LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')&ndash;&gt;
-      and code = #{dataMap.code,jdbcType=VARCHAR}
-    </if>
-    <if test="dataMap.batchcode != null" >
-      and batchcode = #{dataMap.batchcode,jdbcType=VARCHAR}
-    </if>
     <if test="dataMap.name != null" >
       and name LIKE CONCAT('%',#{dataMap.name,jdbcType=VARCHAR},'%')
     </if>
-    <if test="dataMap.phone != null" >
-      and phone LIKE CONCAT('%',#{dataMap.phone,jdbcType=VARCHAR},'%')
+    <if test="dataMap.code != null" >
+      and waybillcode1 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      or waybillcode2 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      or waybillcode3 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      or waybillcode4 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      or waybillcode5 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      or waybillcode6 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
     </if>
-    <if test="dataMap.expresscode != null" >
-      and expresscode = #{dataMap.expresscode,jdbcType=VARCHAR}
-    </if>
-    <if test="dataMap.sender != null" >
-      and sender LIKE CONCAT('%',#{dataMap.sender,jdbcType=VARCHAR},'%')
-    </if>
-    <if test="dataMap.starttime != null" >
-      and createdate BETWEEN #{dataMap.starttime,jdbcType=TIMESTAMP} AND #{dataMap.endtime,jdbcType=TIMESTAMP}
-    </if>
-    <if test="dataMap.problem != null" >
-      and problem = #{dataMap.problem,jdbcType=INTEGER}
+    <if test="dataMap.idNumArray != null" >
+      and idcardnum IN
+      <foreach item="item" index="index" collection="dataMap.idNumArray" open="(" separator="," close=")">
+        #{item}
+      </foreach>
     </if>
     ORDER BY createDate desc
     LIMIT #{start,jdbcType=INTEGER},#{limit,jdbcType=INTEGER};
@@ -279,32 +271,34 @@
   <select id="selectPagerForCount" parameterType="com.chuandu.vo.Pager" resultType="java.lang.Integer">
     select
     count(id)
-    from table_exp_waybill
+    from table_exp_idcard
     WHERE deleted = #{dataMap.deleted,jdbcType=INTEGER}
-    <if test="dataMap.code != null" >
-      &lt;!&ndash;and code LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')&ndash;&gt;
-      and code = #{dataMap.code,jdbcType=VARCHAR}
-    </if>
-    <if test="dataMap.batchcode != null" >
-      and batchcode = #{dataMap.batchcode,jdbcType=VARCHAR}
-    </if>
     <if test="dataMap.name != null" >
       and name LIKE CONCAT('%',#{dataMap.name,jdbcType=VARCHAR},'%')
     </if>
-    <if test="dataMap.phone != null" >
-      and phone LIKE CONCAT('%',#{dataMap.phone,jdbcType=VARCHAR},'%')
+    <if test="dataMap.code != null" >
+      and waybillcode1 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      or waybillcode2 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      or waybillcode3 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      or waybillcode4 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      or waybillcode5 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      or waybillcode6 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
     </if>
-    <if test="dataMap.expresscode != null" >
-      and expresscode = #{dataMap.expresscode,jdbcType=VARCHAR}
+    <if test="dataMap.idNumArray != null" >
+      and idcardnum IN
+      <foreach item="item" index="index" collection="dataMap.idNumArray" open="(" separator="," close=")">
+        #{item}
+      </foreach>
     </if>
-    <if test="dataMap.sender != null" >
-      and sender LIKE CONCAT('%',#{dataMap.sender,jdbcType=VARCHAR},'%')
-    </if>
-    <if test="dataMap.starttime != null" >
-      and createdate BETWEEN #{dataMap.starttime,jdbcType=TIMESTAMP} AND #{dataMap.endtime,jdbcType=TIMESTAMP}
-    </if>
-    <if test="dataMap.problem != null" >
-      and problem = #{dataMap.problem,jdbcType=INTEGER}
-    </if>
-  </select>-->
+  </select>
+  <select id="selectByPrimaryKeys" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from table_exp_idcard
+    WHERE deleted = 1
+    AND id IN
+    <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+  </select>
 </mapper>
