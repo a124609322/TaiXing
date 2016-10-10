@@ -20,6 +20,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
     <mvc:resources location="/fonts/"  mapping="/fonts/**" />
     <mvc:resources location="/js/"  mapping="/js/**" />
     <mvc:resources location="/bootstrap/"  mapping="/bootstrap/**" />
+    <mvc:resources location="/cropavatar/"  mapping="/cropavatar/**" />
     <mvc:resources location="/css/"  mapping="/css/**" />
     <mvc:resources location="/ueditor/"  mapping="/ueditor/**" />
     <mvc:resources location="/image/"  mapping="/image/**" />

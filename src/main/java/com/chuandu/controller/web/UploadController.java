@@ -29,7 +29,7 @@ public class UploadController extends BaseController {
 
 
     @RequestMapping(value = "/idcard",method = RequestMethod.POST)
-    public String uploadIdCard(IdCardInfo idCardInfo,String waybillcode, MultipartFile frontCard,MultipartFile backCard,Model model){
+    public String uploadIdCard(IdCardInfo idCardInfo,String waybillcode, String frontCard,String backCard,Model model){
         boolean flag = true;
         try {
             //判断数据有效性
@@ -53,39 +53,19 @@ public class UploadController extends BaseController {
                 flag = false;
                 model.addAttribute("nameError","姓名不能为空！");
             }
-            if(frontCard.getSize() == 0){
+            boolean idNumberIsExist = idCardInfoService.isExist(idCardInfo.getIdcardnum(),idCardInfo.getCardtype());
+            if(!idNumberIsExist && frontCard.trim().length() <= 0){
                 flag = false;
                 model.addAttribute("frontCardError","正面照片不能为空！");
-            }else {
-                //判断附件有效性
-                String contentType = frontCard.getContentType();
-                long size = frontCard.getSize();
-                if(size >= 1048576l){
-                    flag = false;
-                    model.addAttribute("frontCardError","正面照片附件大小超过1024kb！");
-                }
-                if(!"image/png".equals(contentType) && !"image/jpg".equals(contentType) && !"image/gif".equals(contentType) && !"image/jpeg".equals(contentType)){
-                    flag = false;
-                    model.addAttribute("frontCardError","正面照片附件格式不正确！");
-                }
             }
-            if(backCard.getSize() == 0){
+            if(!idNumberIsExist && frontCard.trim().length() <= 0){
+                flag = false;
+                model.addAttribute("frontCardError","正面照片不能为空！");
+            }
+            if(!idNumberIsExist && backCard.trim().length() <= 0){
                 flag = false;
                 model.addAttribute("backCardError","背面照片不能为空！");
-            }else{
-                //判断附件有效性
-                String contentType = backCard.getContentType();
-                long size = backCard.getSize();
-                if(size >= 1048576l){
-                    flag = false;
-                    model.addAttribute("backCardError","背面照片附件大小超过1024kb！");
-                }
-                if(!"image/png".equals(contentType) && !"image/jpg".equals(contentType) && !"image/gif".equals(contentType) && !"image/jpeg".equals(contentType)){
-                    flag = false;
-                    model.addAttribute("backCardError","背面照片附件格式不正确！");
-                }
             }
-
             if(flag){
                 idCardInfoService.saveOrUpdateIdCard(idCardInfo,waybillcode,frontCard,backCard);
             }else{
@@ -94,13 +74,14 @@ public class UploadController extends BaseController {
                 model.addAttribute("phone",idCardInfo.getPhone());
                 model.addAttribute("email",idCardInfo.getEmail());
                 model.addAttribute("name",idCardInfo.getName());
-                model.addAttribute("frontcard",frontCard.getOriginalFilename());
-                model.addAttribute("backcard",backCard.getOriginalFilename());
+                model.addAttribute("frontcard",frontCard);
+                model.addAttribute("backcard",backCard);
                 model.addAttribute("waybillcode",waybillcode);
                 return "idcardupload";
             }
         } catch (Exception e) {
             logger.error(e.getMessage(),e);
+            return "page/common/error";
         }
         return "page/common/sucess";
     }

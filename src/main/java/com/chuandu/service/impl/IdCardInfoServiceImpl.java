@@ -9,9 +9,10 @@ import com.chuandu.util.ExcelUtil;
 import com.chuandu.vo.Pager;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,30 +32,41 @@ public class IdCardInfoServiceImpl extends BaseService implements IdCardInfoServ
 
 
     @Override
-    public void saveOrUpdateIdCard(IdCardInfo idCardInfo, String waybillcode, MultipartFile frontCard, MultipartFile backCard) throws IOException {
+    public void saveOrUpdateIdCard(IdCardInfo idCardInfo, String waybillcode, String frontCard, String backCard) throws IOException {
         IdCardInfo temp = idCardInfoMapper.selectByIdNumber(idCardInfo.getIdcardnum(),idCardInfo.getCardtype());
         String frontCardSrc = null;
-        String backCardSrc = null;
+        BufferedImage backCardImage = null;
+        BufferedImage frontCardImage = null;
+        BufferedImage idCardImage = null;
+        if(StringUtils.isNotBlank(frontCard)){
+            byte[] frontCardByte = CommonUtil.generateImage(frontCard);
+            InputStream frontCardIS = new ByteArrayInputStream(frontCardByte);
+            frontCardImage = ImageIO.read(frontCardIS);
+        }
+        if(StringUtils.isNotBlank(backCard)){
+            byte[] backCardByte = CommonUtil.generateImage(backCard);
+            InputStream backCardIS = new ByteArrayInputStream(backCardByte);
+            backCardImage = ImageIO.read(backCardIS);
+        }
+        if(null != backCardImage && null != frontCardImage){
+            idCardImage = CommonUtil.mergeImage(frontCardImage,backCardImage,false);
+        }
         if(null == temp){
             temp = idCardInfo;
             temp.setId(UUID.randomUUID().toString());
             temp.setWaybillcode1(waybillcode);
             temp.setDeleted(1);
             temp.setCreatedate(new Date());
-            frontCardSrc = CommonUtil.getPropertiesValue("config.properties","idcardpic_url")+idCardInfo.getIdcardnum()+"/frontCard."+frontCard.getContentType().split("/")[1];
-            backCardSrc = CommonUtil.getPropertiesValue("config.properties","idcardpic_url")+idCardInfo.getIdcardnum()+"/backCard."+backCard.getContentType().split("/")[1];
+            frontCardSrc = CommonUtil.getPropertiesValue("config.properties","idcardpic_url")+idCardInfo.getIdcardnum()+"/"+idCardInfo.getIdcardnum()+".jpg";
             temp.setFrontcard(frontCardSrc);
-            temp.setBackcard(backCardSrc);
             idCardInfoMapper.insertSelective(temp);
         }else{
             temp.setName(idCardInfo.getName());
             temp.setPhone(idCardInfo.getPhone());
             temp.setEmail(idCardInfo.getEmail());
             temp.setModifydate(new Date());
-            frontCardSrc = CommonUtil.getPropertiesValue("config.properties","idcardpic_url")+idCardInfo.getIdcardnum()+"/frontCard."+frontCard.getContentType().split("/")[1];
-            backCardSrc = CommonUtil.getPropertiesValue("config.properties","idcardpic_url")+idCardInfo.getIdcardnum()+"/backCard."+backCard.getContentType().split("/")[1];
+            frontCardSrc = CommonUtil.getPropertiesValue("config.properties","idcardpic_url")+idCardInfo.getIdcardnum()+"/"+idCardInfo.getIdcardnum()+".jpg";
             temp.setFrontcard(frontCardSrc);
-            temp.setBackcard(backCardSrc);
             if(StringUtils.isNotBlank(waybillcode)){
                 if(StringUtils.isBlank(temp.getWaybillcode1())){
                     temp.setWaybillcode1(waybillcode);
@@ -79,23 +91,24 @@ public class IdCardInfoServiceImpl extends BaseService implements IdCardInfoServ
             }
             idCardInfoMapper.updateByPrimaryKeySelective(temp);
         }
+        if(null == idCardImage){
+            return;
+        }
         String src =CommonUtil.getPropertiesValue("config.properties","basePath")+CommonUtil.getPropertiesValue("config.properties","idcardpic_url")+idCardInfo.getIdcardnum();
         File file = new File(src);
         File[] tempFiles = null;
         if(file.exists()){
             tempFiles = file.listFiles();
+            if(null != tempFiles){
+                for(File deleteFile : tempFiles){
+                    deleteFile.delete();
+                }
+            }
         }else{
             file.mkdirs();
         }
-        File frontFile = new File(CommonUtil.getPropertiesValue("config.properties","basePath")+temp.getFrontcard());
-        frontCard.transferTo(frontFile);
-        File backFile = new File(CommonUtil.getPropertiesValue("config.properties","basePath")+temp.getBackcard());
-        backCard.transferTo(backFile);
-        if(null != tempFiles){
-            for(File deleteFile : tempFiles){
-                deleteFile.delete();
-            }
-        }
+        String fileSrc = CommonUtil.getPropertiesValue("config.properties","basePath")+temp.getFrontcard();
+        CommonUtil.saveImage(idCardImage,fileSrc,"jpg");
     }
 
     @Override
@@ -142,7 +155,7 @@ public class IdCardInfoServiceImpl extends BaseService implements IdCardInfoServ
             if(StringUtils.isNotBlank(idCardInfo.getFrontcard())){
                 buf = new byte[1024];
                 readLen = 0;
-                zipEntry = new ZipEntry(idCardInfo.getIdcardnum()+"/"+idCardInfo.getFrontcard().substring(idCardInfo.getFrontcard().lastIndexOf("/")));
+                zipEntry = new ZipEntry(idCardInfo.getIdcardnum()+idCardInfo.getFrontcard().substring(idCardInfo.getFrontcard().lastIndexOf("/")));
                 zos.putNextEntry(zipEntry);
                 is = new BufferedInputStream(new FileInputStream(frontSrc+idCardInfo.getFrontcard()));
                 // 把数据写入到客户端
@@ -151,20 +164,17 @@ public class IdCardInfoServiceImpl extends BaseService implements IdCardInfoServ
                 }
                 is.close();
             }
-            if(StringUtils.isNotBlank(idCardInfo.getBackcard())){
-                buf = new byte[1024];
-                readLen = 0;
-                zipEntry = new ZipEntry(idCardInfo.getIdcardnum()+"/"+idCardInfo.getBackcard().substring(idCardInfo.getBackcard().lastIndexOf("/")));
-                zos.putNextEntry(zipEntry);
-                is = new BufferedInputStream(new FileInputStream(frontSrc+idCardInfo.getBackcard()));
-                // 把数据写入到客户端
-                while ((readLen = is.read(buf, 0, 1024)) != -1) {
-                    zos.write(buf, 0, readLen);
-                }
-                is.close();
-            }
         }
         zos.close();
+    }
+
+    @Override
+    public boolean isExist(String idcardnum, Integer cardtype) {
+        IdCardInfo temp = idCardInfoMapper.selectByIdNumber(idcardnum,cardtype);
+        if(null != temp && StringUtils.isNotBlank(temp.getIdcardnum())){
+            return true;
+        }
+        return false;
     }
 
     private void handleContent(String[][] data, List<IdCardInfo> idCardInfoList) {

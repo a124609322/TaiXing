@@ -1,11 +1,13 @@
 /**
  * Created by a1246_000 on 2016/10/3.
  */
+
 function backHome(){
     window.location.href="index.jsp";
 }
 
 function submitForm(){
+    $("#submitFormButton").attr("disabled","disabled");
     var flag = true;
     var temp = $("#cardtype").val();
     if(!temp){
@@ -42,21 +44,9 @@ function submitForm(){
     }else{
         $("#emailError").html("");
     }
-    temp = $("#frontCard").val();
-    if(!temp){
-        $("#frontCardError").html("正面照片不能为空！");
-        flag = false;
-    }else{
-        $("#frontCardError").html("");
-    }
-    temp = $("#backCard").val();
-    if(!temp){
-        $("#backCardError").html("背面照片不能为空！");
-        flag = false;
-    }else{
-        $("#backCardError").html("");
-    }
     if(flag){
         $("#uploadidcard").submit();
+    }else{
+        $("#submitFormButton").removeAttr("disabled");
     }
 }

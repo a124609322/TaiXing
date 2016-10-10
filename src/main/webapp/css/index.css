@@ -178,12 +178,12 @@
 }
 
 .nav .info{
-    width: 1200px;
+    width: 1400px;
     margin: 0 auto;
 }
 .nav .info .float{
     float: left;
-    width: 120px;
+    width: 140px;
     line-height: 80px;
     font-size: 24px;
     margin-left: 60px;
