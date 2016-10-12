@@ -28,4 +28,6 @@ public interface IdCardInfoService {
     void handlerExportPicData(String[] ids, OutputStream os) throws IOException;
 
     boolean isExist(String idcardnum, Integer cardtype);
+
+    void deleteList(String[] idList) throws IOException;
 }

@@ -3,21 +3,20 @@ package com.chuandu.service.impl;
 import com.chuandu.constant.Constant;
 import com.chuandu.dao.IdCardInfoMapper;
 import com.chuandu.model.IdCardInfo;
+import com.chuandu.model.Waybill;
 import com.chuandu.service.IdCardInfoService;
 import com.chuandu.util.CommonUtil;
 import com.chuandu.util.ExcelUtil;
 import com.chuandu.vo.Pager;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -175,6 +174,30 @@ public class IdCardInfoServiceImpl extends BaseService implements IdCardInfoServ
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void deleteList(String[] idList) throws IOException {
+        IdCardInfo idCardInfo = null;
+        for(String id : idList){
+            idCardInfo = idCardInfoMapper.selectByPrimaryKey(id);
+            if(null == idCardInfo){
+                continue;
+            }
+            idCardInfoMapper.deleteByPrimaryKey(id);
+            String src =CommonUtil.getPropertiesValue("config.properties","basePath")+CommonUtil.getPropertiesValue("config.properties","idcardpic_url")+idCardInfo.getIdcardnum();
+            File file = new File(src);
+            File[] tempFiles = null;
+            if(file.exists()){
+                tempFiles = file.listFiles();
+                if(null != tempFiles){
+                    for(File deleteFile : tempFiles){
+                        deleteFile.delete();
+                    }
+                }
+                file.delete();
+            }
+        }
     }
 
     private void handleContent(String[][] data, List<IdCardInfo> idCardInfoList) {

@@ -74,5 +74,47 @@ Ext.define("app.chuandu.controller.IdCardController",{
                 window.open('/admin/idcardinfo/exportIdCardPic'+params);
             }
         })
+    },
+    deleteIdCardWindow:function() {
+        var grid = this.getView().down('idcardgrid');
+        var selections = grid.getSelectionModel().getSelection();
+        if(selections.length == 0){
+            CommonMsg.warinning({
+                msg: "请至少选择一条数据进行操作！"
+            })
+            return;
+        }
+        var message = "确定删除要删除 <strong>证件记录</strong> 中的";
+        var idArray = [];
+        message += '以下 ' + selections.length + ' 条记录吗?';
+        message += '<ol>';
+        Ext.Array.each(selections, function(record) {
+            message += '<li>' + record.get('idcardnum') + '</li>';
+            idArray.push(record.get('id'));
+        });
+        message += '</ol>';
+        CommonMsg.question({
+            title:'确定删除',
+            msg : message,
+            fn : function(){
+                ExtCommon.request({
+                    url:'/admin/idcardinfo/delete.json',
+                    method:'POST',
+                    params:{idList:idArray},
+                    success:function(){
+                        CommonMsg.info({
+                            msg:'删除成功！',
+                            fn:function(){
+                                var store = Ext.data.StoreManager.lookup('idcardModuleStore');
+                                store.reload({
+                                    params:{}
+                                });
+                            }
+                        });
+
+                    }
+                });
+            }
+        })
     }
 });

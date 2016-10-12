@@ -20,7 +20,7 @@ String basePath = request.getScheme() + "://"
 <jsp:include page="${ctx}/header.jsp"/>
 <div class="message" style="height: 600px">
     <div style="color: white;font-size: 30px;margin:auto;width: 480px;padding-top: 200px">
-        操作成功，等待 <span id="time">10</span> 秒 跳转到首页
+        操作成功，等待 <span id="time">3</span> 秒 跳转到首页
     </div>
     <div style="margin:auto;width: 120px;padding-top: 20px">
         <a href="${ctx}/index.jsp" style="color: white;font-size: 20px;">点击跳转首页</a>
@@ -31,7 +31,7 @@ String basePath = request.getScheme() + "://"
 <script src="${ctx}/js/message.js"></script>
 </body>
 <script type="application/javascript">
-    var second =  10;
+    var second =  3;
     function countSecond(){
         $("#time").html(second);
         if(second == 0){

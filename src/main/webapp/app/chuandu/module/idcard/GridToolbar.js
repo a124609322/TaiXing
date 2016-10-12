@@ -13,6 +13,10 @@ Ext.define('app.chuandu.module.idcard.GridToolbar', {
                 text: '导出证件照片',
                 glyph: 0xf1c5,
                 handler: 'exportIdCardPicWindow'
+            },'-', {
+                text: '删除',
+                glyph: 0xf014,
+                handler: 'deleteIdCardWindow'
             }]
         this.callParent();
     }

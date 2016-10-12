@@ -106,4 +106,17 @@ public class IdCardInfoController extends BaseController {
             }
         }
     }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public Model deleteWaybill(String[] idList, Model model) {
+        boolean success = true;
+        try {
+            idCardInfoService.deleteList(idList);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            success = false;
+        }
+        model.addAttribute("success", success);
+        return model;
+    }
 }

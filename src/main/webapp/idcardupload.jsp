@@ -133,12 +133,12 @@
                 <div class="form-group">
                     <div for="code" class="col-sm-2 control-label must">证件类型</div>
                     <div class="col-sm-10">
-                        <select id="cardtype" name="cardtype" class="form-control" value="${cardtype}">
+                        <select id="cardtype" name="cardtype" class="form-control" >
                             <option value="">请选择</option>
-                            <option value="0">大陆身份证</option>
-                            <option value="1">大陆护照</option>
-                            <option value="2">外国护照</option>
-                            <option value="4">其他</option>
+                            <option value="0" <c:if test="${cardtype eq '0'}"> selected="true"</c:if>>大陆身份证</option>
+                            <option value="1" <c:if test="${cardtype eq '1'}"> selected="true"</c:if>>大陆护照</option>
+                            <option value="2" <c:if test="${cardtype eq '2'}"> selected="true"</c:if>>外国护照</option>
+                            <option value="4" <c:if test="${cardtype eq '3'}"> selected="true"</c:if>>其他</option>
                         </select>
                         <span id="cardTypeError" class="label label-danger">${cardTypeError}</span>
                     </div>
@@ -189,7 +189,11 @@
                         </c:if>
                     </div>
                     <input type="hidden" id="frontCard" name="frontCard" value="${frontcard}">
-                    <span id="frontCardError" class="label label-danger">${frontCardError}</span>
+                </div>
+                <div class="form-group" style="margin-top: 30px">
+                    <div class="idcard_file_desc">
+                        <span id="frontCardError" class="label label-danger">${frontCardError}</span>
+                    </div>
                 </div>
                 <div class="form-group" style="margin-top: 50px">
                     <div for="backCard" class="col-sm-3 control-label must">身份证背面</div>
@@ -203,9 +207,13 @@
                         </c:if>
                     </div>
                     <input type="hidden" id="backCard" name="backCard" value="${backcard}">
-                    <span id="backCardError" class="label label-danger">${backCardError}</span>
                 </div>
-                <div class="form-group" style="margin-top: 50px">
+                <div class="form-group" style="margin-top: 5px">
+                    <div class="idcard_file_desc">
+                        <span id="backCardError" class="label label-danger">${backCardError}</span>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 20px">
                     <div class="idcard_file_desc">
                         <p> 图片说明: 身份证第一上传必须上传照片，之后可以不上传照片</p>
                         <p> 图片格式: jpg/png/gif ; File format: jpg/png/gif </p>
