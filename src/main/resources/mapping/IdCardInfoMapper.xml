@@ -251,12 +251,30 @@
       and name LIKE CONCAT('%',#{dataMap.name,jdbcType=VARCHAR},'%')
     </if>
     <if test="dataMap.code != null" >
-      and waybillcode1 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
-      or waybillcode2 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
-      or waybillcode3 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
-      or waybillcode4 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
-      or waybillcode5 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
-      or waybillcode6 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      and waybillcode1 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      or waybillcode2 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      or waybillcode3 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      or waybillcode4 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      or waybillcode5 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      or waybillcode6 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
     </if>
     <if test="dataMap.idNumArray != null" >
       and idcardnum IN
@@ -277,12 +295,30 @@
       and name LIKE CONCAT('%',#{dataMap.name,jdbcType=VARCHAR},'%')
     </if>
     <if test="dataMap.code != null" >
-      and waybillcode1 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
-      or waybillcode2 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
-      or waybillcode3 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
-      or waybillcode4 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
-      or waybillcode5 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
-      or waybillcode6 LIKE CONCAT('%',#{dataMap.code,jdbcType=VARCHAR},'%')
+      and waybillcode1 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      or waybillcode2 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      or waybillcode3 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      or waybillcode4 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      or waybillcode5 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+      or waybillcode6 IN
+      <foreach item="item" index="index" collection="dataMap.code" open="(" separator="," close=")">
+        #{item}
+      </foreach>
     </if>
     <if test="dataMap.idNumArray != null" >
       and idcardnum IN

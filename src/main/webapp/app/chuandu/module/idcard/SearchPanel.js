@@ -18,7 +18,7 @@ Ext.define('app.chuandu.module.idcard.SearchPanel', {
                 id: 'idcard_search_name',
                 margin: '5 0 5 10',
             }, {
-                xtype: 'textfield',
+                xtype: 'textareafield',
                 fieldLabel: '单号',
                 labelWidth: 50,
                 id: 'idcard_search_code',

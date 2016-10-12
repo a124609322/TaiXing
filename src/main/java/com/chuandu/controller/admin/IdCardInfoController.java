@@ -40,7 +40,8 @@ public class IdCardInfoController extends BaseController {
             pager.getDataMap().put("name", name);
         }
         if (StringUtils.isNotBlank(code)) {
-            pager.getDataMap().put("code", code);
+            String[] codeArray = code.split("\\n");
+            pager.getDataMap().put("code", codeArray);
         }
         if (StringUtils.isNotBlank(idnums)) {
             String[] idNumArray = idnums.split("\\n");
