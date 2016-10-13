@@ -154,7 +154,7 @@ public class IdCardInfoServiceImpl extends BaseService implements IdCardInfoServ
             if(StringUtils.isNotBlank(idCardInfo.getFrontcard())){
                 buf = new byte[1024];
                 readLen = 0;
-                zipEntry = new ZipEntry(idCardInfo.getIdcardnum()+idCardInfo.getFrontcard().substring(idCardInfo.getFrontcard().lastIndexOf("/")));
+                zipEntry = new ZipEntry(idCardInfo.getFrontcard().substring(idCardInfo.getFrontcard().lastIndexOf("/")+1));
                 zos.putNextEntry(zipEntry);
                 is = new BufferedInputStream(new FileInputStream(frontSrc+idCardInfo.getFrontcard()));
                 // 把数据写入到客户端
