@@ -278,7 +278,12 @@ public class LogisticsServiceImpl extends BaseService implements LogisticsServci
         Logistics logistics = null;
         int currentState = 0;
         Waybill updateTemp = null;
+        Robot tempRobot = null;
         if(null == waybillList || waybillList.size()<=0){
+            tempRobot = new Robot();
+            tempRobot.setId(robot.getId());
+            tempRobot.setIsautoupdate(Constant.ROBOT_AUTO_FALSE);
+            robotMapper.updateByPrimaryKeySelective(tempRobot);
             return true;
         }
         for(Waybill waybill : waybillList){
@@ -288,6 +293,9 @@ public class LogisticsServiceImpl extends BaseService implements LogisticsServci
             if(currentState>=6){
                 updateTemp.setIsautoupdate(Constant.ROBOT_AUTO_FALSE);
             }else {
+                if(waybill.getIsautoupdate().equals(Constant.ROBOT_AUTO_FALSE)){
+                    continue;
+                }
                 logistics = new Logistics();
                 currentState++;
                 switch (currentState){
@@ -319,6 +327,7 @@ public class LogisticsServiceImpl extends BaseService implements LogisticsServci
                     case Constant.ROBOT_STATE6:
                         if(!StringUtils.isNullOrEmpty(robot.getState6())){
                             logistics.setInfo(robot.getState6());
+                            updateTemp.setIsautoupdate(0);
                         }
                         break;
                 }
